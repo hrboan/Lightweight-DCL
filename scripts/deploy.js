@@ -1,32 +1,20 @@
-// We require the Hardhat Runtime Environment explicitly here. This is optional
-// but useful for running the script in a standalone fashion through `node <script>`.
-//
-// You can also run a script with `npx hardhat run <script>`. If you do that, Hardhat
-// will compile your contracts, add the Hardhat Runtime Environment's members to the
-// global scope, and execute the script.
 const hre = require("hardhat");
 
 async function main() {
-  const currentTimestampInSeconds = Math.round(Date.now() / 1000);
-  const unlockTime = currentTimestampInSeconds + 60;
+  // DeviceAuth 컨트랙트 팩토리를 가져옵니다.
+  const DeviceAuth = await hre.ethers.getContractFactory("DeviceAuth");
+  
+  // 컨트랙트 배포를 시작합니다.
+  const deviceAuth = await DeviceAuth.deploy();
 
-  const lockedAmount = hre.ethers.parseEther("0.001");
+  // 배포가 완료될 때까지 기다립니다.
+  await deviceAuth.waitForDeployment();
 
-  const lock = await hre.ethers.deployContract("Lock", [unlockTime], {
-    value: lockedAmount,
-  });
-
-  await lock.waitForDeployment();
-
-  console.log(
-    `Lock with ${ethers.formatEther(
-      lockedAmount
-    )}ETH and unlock timestamp ${unlockTime} deployed to ${lock.target}`
-  );
+  // 배포된 컨트랙트의 주소를 출력합니다. (나중에 프론트엔드에 입력해야 함)
+  const address = await deviceAuth.getAddress();
+  console.log("DeviceAuth 컨트랙트 배포 완료! 주소:", address);
 }
 
-// We recommend this pattern to be able to use async/await everywhere
-// and properly handle errors.
 main().catch((error) => {
   console.error(error);
   process.exitCode = 1;

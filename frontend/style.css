@@ -1,0 +1,272 @@
+/* frontend/style.css 전체 코드 */
+
+/* 기본 스타일 */
+:root {
+    --primary-blue: #007bff;
+    --primary-blue-hover: #0069d9;
+    --bg-color: #f4f6f9;
+    --card-bg: #ffffff;
+    --text-color: #333333;
+    --border-color: #e0e0e0;
+    --header-height: 70px;
+    --sidebar-width: 250px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    box-sizing: border-box;
+}
+
+* {
+    box-sizing: inherit;
+}
+
+/* 앱 컨테이너 (전체 레이아웃) */
+.app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* 상단 헤더 */
+.app-header {
+    height: var(--header-height);
+    background-color: #ffffff;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    z-index: 100;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--primary-blue);
+}
+
+.project-name {
+    font-size: 18px;
+    color: #666;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* 앱 콘텐츠 워퍼 (사이드바 + 메인) */
+.app-content-wrapper {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+/* 좌측 사이드바 */
+.app-sidebar {
+    width: var(--sidebar-width);
+    background-color: #ffffff;
+    border-right: 1px solid var(--border-color);
+    padding: 20px 0;
+    overflow-y: auto;
+}
+
+.sidebar-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-nav li a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    text-decoration: none;
+    color: #555;
+    font-size: 16px;
+    transition: background-color 0.2s;
+}
+
+.sidebar-nav li.active a {
+    color: var(--primary-blue);
+    background-color: #eaf2ff;
+    border-left: 4px solid var(--primary-blue);
+}
+
+.sidebar-nav li a:hover {
+    background-color: #f9f9f9;
+}
+
+/* 우측 메인 콘텐츠 */
+.app-main {
+    flex: 1;
+    padding: 30px;
+    overflow-y: auto;
+}
+
+.app-main h1 {
+    font-size: 28px;
+    margin-top: 0;
+}
+
+.wallet-info {
+    color: #666;
+    margin-bottom: 30px;
+}
+
+/* 대시보드 그리드 */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+/* 카드 스타일 */
+.card {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.card-icon {
+    font-size: 30px;
+    color: var(--primary-blue);
+}
+
+.card-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+    color: #333;
+}
+
+.card-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* 폼 스타일 */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 14px;
+    color: #666;
+}
+
+input {
+    padding: 10px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+}
+
+/* 버튼 그룹 (여기서 버튼들이 똑같은 길이를 가지도록 수정됨) */
+.btn-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btn-group button {
+    width: 100%;
+}
+
+/* 버튼 스타일 */
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s, opacity 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-primary {
+    background-color: var(--primary-blue);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-blue-hover);
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-success {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-big {
+    width: 100%;
+    padding: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* 상태 메시지 스타일 */
+.status {
+    margin: 10px 0 0;
+    font-weight: bold;
+    color: #d9534f;
+    min-height: 1em;
+}
+
+.success {
+    color: #28a745;
+}

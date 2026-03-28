@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lightweight-DCL 대시보드</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="header-left">
+                <span class="logo">DCL</span>
+                <span class="project-name">Lightweight-DCL</span>
+            </div>
+            <div class="header-right">
+                <button id="connectWalletBtn" class="btn-primary">
+                    <span class="material-icons-outlined">account_balance_wallet</span>
+                    <span>Connect Wallet</span>
+                </button>
+            </div>
+        </header>
+
+        <div class="app-content-wrapper">
+            <aside class="app-sidebar">
+                <nav class="sidebar-nav">
+                    <ul>
+                        <li class="active">
+                            <a href="#">
+                                <span class="material-icons-outlined">dashboard</span>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="material-icons-outlined">devices</span>
+                                <span>Device List</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="material-icons-outlined">settings</span>
+                                <span>Settings</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <main class="app-main">
+                <h1>Dashboard</h1>
+                <p id="walletAddress" class="wallet-info">Wallet: Not Connected</p>
+
+                <div class="dashboard-grid">
+                    <div class="card card-registration">
+                        <div class="card-header">
+                            <span class="material-icons-outlined card-icon">devices</span>
+                            <h2 class="card-title">1. 기기 발견 및 등록</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="deviceIdInput">기기 ID</label>
+                                <input type="text" id="deviceIdInput" value="temp-001" readonly>
+                            </div>
+                            <div class="btn-group">
+                                <button id="discoverBtn" class="btn-secondary">
+                                    <span class="material-icons-outlined">search</span>
+                                    <span>가상 기기 연결 테스트 (발견)</span>
+                                </button>
+                                <button id="registerBtn" class="btn-primary" disabled>
+                                    <span class="material-icons-outlined">app_registration</span>
+                                    <span>블록체인에 등록</span>
+                                </button>
+                            </div>
+                            <p id="registerStatus" class="status"></p>
+                        </div>
+                    </div>
+
+                    <div class="card card-authentication">
+                        <div class="card-header">
+                            <span class="material-icons-outlined card-icon">security</span>
+                            <h2 class="card-title">2. 실시간 인증 검증</h2>
+                        </div>
+                        <div class="card-body">
+                            <button id="authBtn" class="btn-big">
+                                <span class="material-icons-outlined">verified_user</span>
+                                <span>현재 기기 인증 상태 확인</span>
+                            </button>
+                            <p id="authResult" class="status"></p>
+                        </div>
+                    </div>
+
+                    <div class="card card-management">
+                        <div class="card-header">
+                            <span class="material-icons-outlined card-icon">settings_applications</span>
+                            <h2 class="card-title">3. 상태 및 권한 관리</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="btn-group">
+                                <button id="deactivateBtn" class="btn-danger">
+                                    <span class="material-icons-outlined">block</span>
+                                    <span>기기 비활성화 (차단)</span>
+                                </button>
+                                <button id="activateBtn" class="btn-success">
+                                    <span class="material-icons-outlined">check_circle</span>
+                                    <span>기기 활성화 (복구)</span>
+                                </button>
+                            </div>
+                            <p id="manageStatus" class="status"></p>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script type="module" src="./main.js"></script>
+</body>
+</html>
