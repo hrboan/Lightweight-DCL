@@ -49,68 +49,90 @@
             </aside>
 
             <main class="app-main">
-                <h1>Dashboard</h1>
-                <p id="walletAddress" class="wallet-info">Wallet: Not Connected</p>
+                <section id="dashboardSection">
+                    <h1>Dashboard</h1>
+                    <p id="walletAddress" class="wallet-info">Wallet: Not Connected</p>
 
-                <div class="dashboard-grid">
-                    <div class="card card-registration">
-                        <div class="card-header">
-                            <span class="material-icons-outlined card-icon">devices</span>
-                            <h2 class="card-title">1. 기기 발견 및 등록</h2>
+                    <div class="dashboard-grid">
+                        <div class="card card-registration">
+                            <div class="card-header">
+                                <span class="material-icons-outlined card-icon">devices</span>
+                                <h2 class="card-title">1. 기기 발견 및 등록</h2>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="deviceIdInput">기기 ID</label>
+                                    <input type="text" id="deviceIdInput" placeholder="기기 ID를 입력하세요 (예: IoT-01)">
+                                </div>
+                                <div class="btn-group">
+                                    <button id="discoverBtn" class="btn-secondary">
+                                        <span class="material-icons-outlined">search</span>
+                                        <span>가상 기기 연결 테스트 (발견)</span>
+                                    </button>
+                                    <button id="registerBtn" class="btn-primary" disabled>
+                                        <span class="material-icons-outlined">app_registration</span>
+                                        <span>블록체인에 등록</span>
+                                    </button>
+                                </div>
+                                <p id="registerStatus" class="status"></p>
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label for="deviceIdInput">기기 ID</label>
-                                <input type="text" id="deviceIdInput" value="temp-001" readonly>
+
+                        <div class="card card-authentication">
+                            <div class="card-header">
+                                <span class="material-icons-outlined card-icon">security</span>
+                                <h2 class="card-title">2. 실시간 인증 검증</h2>
                             </div>
-                            <div class="btn-group">
-                                <button id="discoverBtn" class="btn-secondary">
-                                    <span class="material-icons-outlined">search</span>
-                                    <span>가상 기기 연결 테스트 (발견)</span>
+                            <div class="card-body">
+                                <button id="authBtn" class="btn-big">
+                                    <span class="material-icons-outlined">verified_user</span>
+                                    <span>현재 기기 인증 상태 확인</span>
                                 </button>
-                                <button id="registerBtn" class="btn-primary" disabled>
-                                    <span class="material-icons-outlined">app_registration</span>
-                                    <span>블록체인에 등록</span>
-                                </button>
+                                <p id="authResult" class="status"></p>
                             </div>
-                            <p id="registerStatus" class="status"></p>
+                        </div>
+
+                        <div class="card card-management">
+                            <div class="card-header">
+                                <span class="material-icons-outlined card-icon">settings_applications</span>
+                                <h2 class="card-title">3. 상태 및 권한 관리</h2>
+                            </div>
+                            <div class="card-body">
+                                <div class="btn-group">
+                                    <button id="deactivateBtn" class="btn-danger">
+                                        <span class="material-icons-outlined">block</span>
+                                        <span>기기 비활성화 (차단)</span>
+                                    </button>
+                                    <button id="activateBtn" class="btn-success">
+                                        <span class="material-icons-outlined">check_circle</span>
+                                        <span>기기 활성화 (복구)</span>
+                                    </button>
+                                </div>
+                                <p id="manageStatus" class="status"></p>
+                            </div>
                         </div>
                     </div>
+                </section>
 
-                    <div class="card card-authentication">
-                        <div class="card-header">
-                            <span class="material-icons-outlined card-icon">security</span>
-                            <h2 class="card-title">2. 실시간 인증 검증</h2>
-                        </div>
+                <section id="deviceListSection" style="display: none;">
+                    <h1>Device List</h1>
+                    <div class="card">
                         <div class="card-body">
-                            <button id="authBtn" class="btn-big">
-                                <span class="material-icons-outlined">verified_user</span>
-                                <span>현재 기기 인증 상태 확인</span>
-                            </button>
-                            <p id="authResult" class="status"></p>
+                            <table style="width: 100%; border-collapse: collapse; text-align: left;">
+                                <thead>
+                                    <tr style="border-bottom: 2px solid #eee;">
+                                        <th style="padding: 15px 0;">기기 ID</th>
+                                        <th>상태</th>
+                                        <th>관리</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="deviceTableBody">
+                                    </tbody>
+                            </table>
                         </div>
                     </div>
+                </section>
 
-                    <div class="card card-management">
-                        <div class="card-header">
-                            <span class="material-icons-outlined card-icon">settings_applications</span>
-                            <h2 class="card-title">3. 상태 및 권한 관리</h2>
-                        </div>
-                        <div class="card-body">
-                            <div class="btn-group">
-                                <button id="deactivateBtn" class="btn-danger">
-                                    <span class="material-icons-outlined">block</span>
-                                    <span>기기 비활성화 (차단)</span>
-                                </button>
-                                <button id="activateBtn" class="btn-success">
-                                    <span class="material-icons-outlined">check_circle</span>
-                                    <span>기기 활성화 (복구)</span>
-                                </button>
-                            </div>
-                            <p id="manageStatus" class="status"></p>
-                        </div>
-                    </div>
-                </div>
             </main>
         </div>
     </div>
