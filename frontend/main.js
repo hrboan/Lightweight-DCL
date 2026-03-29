@@ -222,3 +222,36 @@ window.handleDelete = async function(id) {
       alert("삭제 실패. (권한이 없거나 이미 삭제된 기기입니다)");
   }
 };
+
+// =========================================================
+// [추가] 7. 다크 모드 토글 및 설정 저장 로직
+// =========================================================
+
+const themeToggleBtn = document.getElementById("themeToggleBtn");
+const themeIcon = document.getElementById("themeIcon");
+
+// 1. 페이지 로드 시, 브라우저에 저장된 테마 설정 불러오기
+const currentTheme = localStorage.getItem("theme");
+if (currentTheme === "dark") {
+    document.body.classList.add("dark-mode");
+    themeIcon.innerText = "light_mode"; // 해 모양 아이콘으로 변경
+}
+
+// 2. 버튼 클릭 시 테마 전환 로직
+if (themeToggleBtn) {
+    themeToggleBtn.addEventListener("click", () => {
+        // body 태그에 dark-mode 클래스를 껐다 켰다 함
+        document.body.classList.toggle("dark-mode");
+        
+        let theme = "light";
+        if (document.body.classList.contains("dark-mode")) {
+            theme = "dark";
+            themeIcon.innerText = "light_mode"; // 다크모드일 땐 '라이트모드로 가기(해)' 아이콘
+        } else {
+            themeIcon.innerText = "dark_mode"; // 라이트모드일 땐 '다크모드로 가기(달)' 아이콘
+        }
+        
+        // 변경된 설정을 브라우저 로컬 스토리지에 저장 (새로고침해도 유지됨!)
+        localStorage.setItem("theme", theme);
+    });
+}

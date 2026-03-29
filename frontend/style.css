@@ -270,3 +270,97 @@ button:disabled {
 .success {
     color: #28a745;
 }
+
+/* =========================================
+   [추가됨] 다크 모드 테마 설정 및 아이콘 버튼
+   ========================================= */
+
+/* 아이콘 버튼 디자인 (헤더 우측 버튼용) */
+.btn-icon {
+    background: none;
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+.btn-icon:hover {
+    background-color: var(--border-color);
+}
+
+/* body에 dark-mode 클래스가 붙었을 때 변수 덮어쓰기 */
+body.dark-mode {
+    --bg-color: #121212;
+    --card-bg: #1e1e1e;
+    --text-color: #e0e0e0;
+    --border-color: #333333;
+    --primary-blue: #3f8cff; /* 파란색을 어두운 배경에 맞게 살짝 밝게 조정 */
+}
+
+/* 다크 모드일 때 특정 요소들 세부 조정 */
+body.dark-mode .app-header,
+body.dark-mode .app-sidebar {
+    background-color: #1e1e1e;
+}
+
+body.dark-mode .card-title,
+body.dark-mode .app-main h1 {
+    color: #ffffff;
+}
+
+body.dark-mode input {
+    background-color: #2c2c2c;
+    color: #ffffff;
+    border-color: #444;
+}
+
+body.dark-mode .sidebar-nav li a {
+    color: #aaa;
+}
+
+body.dark-mode .sidebar-nav li.active a {
+    color: var(--primary-blue);
+    background-color: rgba(63, 140, 255, 0.1); /* 투명도를 주어 부드럽게 */
+}
+
+body.dark-mode table th {
+    border-bottom: 2px solid #333 !important;
+}
+
+/* =========================================
+   다크 모드 - 버튼 색상 톤 다운 (눈 피로도 감소)
+   ========================================= */
+
+/* 1. 현재 기기 인증 상태 확인 버튼 (어두운 회색) */
+body.dark-mode .btn-big {
+    background-color: #2c2c2c;
+    color: #e0e0e0;
+    border: 1px solid #444;
+}
+body.dark-mode .btn-big:hover {
+    background-color: #3a3a3a;
+}
+
+/* 2. 기기 비활성화(차단) 버튼 (톤 다운된 짙은 빨강) */
+body.dark-mode .btn-danger {
+    background-color: #7a1e28; 
+    color: #f8d7da; /* 글씨는 약간 부드러운 분홍빛 하얀색 */
+}
+body.dark-mode .btn-danger:hover {
+    background-color: #5c161e;
+}
+
+/* 3. 기기 활성화(복구) 버튼 (톤 다운된 짙은 초록) */
+body.dark-mode .btn-success {
+    background-color: #1e5c2e;
+    color: #d4edda; /* 글씨는 약간 부드러운 연두빛 하얀색 */
+}
+body.dark-mode .btn-success:hover {
+    background-color: #154221;
+}
